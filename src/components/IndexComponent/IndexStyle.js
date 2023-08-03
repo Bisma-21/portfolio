@@ -239,9 +239,20 @@ const DetailDiv = styled.div`
     padding: 0 10px;
   }
 `;
+const AboutDetailDiv = styled.div`
+  /* padding: 0 50px; */
+  @media (max-width: 700px) {
+    padding: 0 10px;
+  }
+`;
 const Detail = styled.p`
   color: grey;
   /* text-align: center; */
+`;
+const AboutDetail = styled.p`
+  color: grey;
+  line-height: 24px;
+  /* text-align: left; */
 `;
 const Detail2 = styled.p`
   color: grey;
@@ -316,12 +327,21 @@ const IconsContainer = styled.div`
   }
 `;
 const ExpBody = styled.div`
-  border: 1px solid white;
+  /* border: 1px solid white; */
   padding: 10px;
   margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 `;
-const ExpContainer = styled.div``;
-const ProjectContainer = styled.div``;
+const ExpContainer = styled.div`
+  /* border: 1px solid white; */
+  display: flex;
+  flex-direction: column;
+  /* justify-content: ; */
+`;
+const ProjectContainer = styled.div`
+  /* border: 1px solid red; */
+`;
 const IntroDiv = styled.div`
   /* border: 1px solid red; */
   margin-top: 10px;
@@ -344,6 +364,169 @@ const IntroBody = styled.div`
   border-radius: 30px;
   /* margin: 0; */
 `;
+
+const NumberExp = styled.p`
+  color: var(--secondary-color);
+  margin: 0;
+  text-align: center;
+  font-size: 45px;
+  /* font-weight: bolder; */
+`;
+const DetailExp = styled.p`
+  color: grey;
+  margin: 0;
+  /* padding-top: 10px; */
+  text-align: center;
+`;
+const NumberPro = styled.p`
+  color: var(--secondary-color);
+  margin: 0;
+  /* text-align: center; */
+  font-size: 45px;
+  /* font-weight: bolder; */
+`;
+const DetailPro = styled.p`
+  color: grey;
+  margin: 0;
+  /* padding-top: 10px; */
+  /* text-align: center; */
+`;
+const IntroductionContainer = styled.div``;
+const AboutContainer = styled.div``;
+const ResumeContainer = styled.div``;
+const AboutDiv = styled.div`
+  /* border: 1px solid white; */
+  letter-spacing: 1px;
+  text-align: center;
+  margin: 0;
+  /* padding-bottom: 20px; */
+  color: var(--primary-text-color);
+  span {
+    color: #5ccf5c;
+    font-family: "Brush Script MT", cursive;
+  }
+  @media (max-width: 700px) {
+    font-size: 40px;
+  }
+`;
+const About = styled.p`
+  font-size: 50px;
+  /* padding: 0 137px; */
+  letter-spacing: 1px;
+  text-align: left;
+  margin: 0;
+  padding-bottom: 20px;
+  color: var(--primary-text-color);
+  span {
+    color: #5ccf5c;
+    font-family: "Brush Script MT", cursive;
+  }
+  @media (max-width: 700px) {
+    font-size: 40px;
+  }
+`;
+const ResumeBody = styled.div`
+  /* border: 1px solid white; */
+  /* text-align: left; */
+`;
+const ResumeHead = styled.p`
+  /* color: var(--primary-text-color); */
+  font-size: 40px;
+  /* padding: 0 137px; */
+  letter-spacing: 1px;
+  text-align: left;
+  margin: 0;
+  padding-bottom: 20px;
+  color: var(--primary-text-color);
+  span {
+    color: #5ccf5c;
+    font-family: "Brush Script MT", cursive;
+  }
+  @media (max-width: 700px) {
+    font-size: 40px;
+  }
+`;
+const DotDiv = styled.div`
+  /* border: 1px solid white; */
+  /* display: grid; */
+  display: flex;
+  align-items: center;
+  /* flex-direction: column; */
+`;
+const ExpDiv = styled.div`
+  /* border: 1px solid white; */
+  display: flex;
+  align-items: center;
+`;
+const Date = styled.p`
+  color: grey;
+  /* border: 1px solid white; */
+  margin: 0;
+`;
+const Dot = styled.p`
+  color: grey;
+  font-size: 30px;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+  /* border: 1px solid white; */
+`;
+const IstExpDiv = styled.div`
+  /* border: 1px solid red; */
+`;
+const IstHead = styled.p`
+  color: var(--primary-text-color);
+  padding-left: 35px;
+  font-size: 25px;
+  margin: 0;
+`;
+const IstCoName = styled.p`
+  color: grey;
+  padding-left: 35px;
+`;
+
+const IstExpContainer = styled.div``;
+const SkillsContainer = styled.div``;
+const SkillsIcon = styled.div`
+  border: 1px solid grey;
+  width: 4.2rem;
+  border-radius: 30px;
+  height: 6.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+const SkillsDiv = styled.div``;
+const SkillIconBody = styled.div`
+  /* border: 1px solid green; */
+  width: 4.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+const SkillsBody = styled.div`
+  /* border: 1px solid green; */
+  padding: 0 10px;
+  width: 550px;
+  display: flex;
+  gap: 50px;
+  flex-wrap: wrap;
+`;
+const Percent = styled.p`
+  color: var(--primary-text-color);
+  font-size: 16px;
+  letter-spacing: 1px;
+`;
+const SkillName = styled.p`
+  color: var(--primary-text-color);
+  font-size: 12px;
+  font-weight: 600;
+  /* font-weight: bold; */
+  /* letter-spacing: 1px; */
+`;
+
+const MyDetailsContainer = styled.div``;
 export {
   Main,
   OuterContainer,
@@ -388,4 +571,33 @@ export {
   IntroDiv,
   Intro,
   IntroBody,
+  NumberExp,
+  DetailExp,
+  DetailPro,
+  NumberPro,
+  IntroductionContainer,
+  AboutContainer,
+  AboutDiv,
+  About,
+  AboutDetail,
+  AboutDetailDiv,
+  ResumeContainer,
+  ResumeBody,
+  ResumeHead,
+  DotDiv,
+  Dot,
+  ExpDiv,
+  Date,
+  IstExpDiv,
+  IstCoName,
+  IstHead,
+  IstExpContainer,
+  SkillsContainer,
+  SkillsDiv,
+  SkillsIcon,
+  Percent,
+  SkillsBody,
+  SkillIconBody,
+  SkillName,
+  MyDetailsContainer,
 };
