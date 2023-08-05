@@ -9,8 +9,9 @@ const OuterContainer = styled.div`
   background-color: var(--app-background);
   /* padding: 10px; */
   display: grid;
-  grid-template-columns: 1.2fr 3fr;
+  grid-template-columns: 1.2fr 3fr 0.5fr;
   border-radius: 5px;
+  gap: 30px 0;
   @media (max-width: 700px) {
     grid-template-columns: 1fr;
   }
@@ -21,15 +22,46 @@ const LeftContainer = styled.div`
   /* padding: 10px; */
   border-radius: 5px;
   margin: 10px;
+  @media (max-width: 700px) {
+    /* grid-template-columns: 1fr; */
+    display: none;
+  }
+
   /* background-color: black; */
   /* max-height: 500px; */
 `;
 const RightContainer = styled.div`
   /* border: 2px solid red; */
+  padding-left: 100px;
+  @media (max-width: 700px) {
+    padding-left: 0;
+  }
   /* padding: 10px; */
+`;
+const NavigationContainer = styled.div`
+  /* border: 2px solid blue; */
+  @media (max-width: 700px) {
+    /* grid-template-columns: 1fr; */
+    display: none;
+  }
+`;
+const NavigationBody = styled.div`
+  position: fixed;
+  width: 120px;
+  /* border: 1px solid lime; */
+  top: 50%;
+  transform: translateY(-50%);
 `;
 const LeftBody = styled.div`
   /* border: 2px solid red; */
+  /* max-height: 500px; */
+  max-width: 350px;
+  top: 50%;
+  transform: translateY(-50%);
+  position: fixed;
+  width: 100%;
+  border: 1px solid grey;
+  border-radius: 10px;
   /* padding: 10px; */
   /* max-height: 400px; */
 `;
@@ -37,7 +69,7 @@ const HeadingContainer = styled.div`
   /* border: 2px solid red; */
   display: grid;
   grid-template-columns: 1fr 1fr;
-  padding: 10px 15px 0 15px;
+  padding: 10px 15px 20px 15px;
 `;
 const NameDiv = styled.div`
   /* border: 2px solid red; */
@@ -49,6 +81,7 @@ const ProfessionDiv = styled.div`
   display: flex;
   align-items: center;
   justify-content: end;
+
   /* padding: 10px; */
 `;
 const Name = styled.p`
@@ -58,14 +91,17 @@ const Name = styled.p`
   font-family: "Brush Script MT", cursive;
   font-weight: 600;
   letter-spacing: 1px;
-  font-size: 17px;
+  font-size: 22px;
 `;
 const Profession = styled.p`
   /* border: 2px solid red; */
   /* padding: 10px; */
+  text-align: right;
   color: var(--primary-text-color);
   font-family: serif;
   letter-spacing: 0.4px;
+  width: 50%;
+  font-size: 12px;
   /* display: flex;
   justify-content: end; */
 `;
@@ -79,8 +115,8 @@ const ImageContainer = styled.div`
 `;
 const ImageBody = styled.div`
   /* border: 2px solid blue; */
-  width: 190px;
-  height: 170px;
+  width: 240px;
+  height: 220px;
   border-radius: 5px;
 `;
 const Image = styled.img`
@@ -88,12 +124,17 @@ const Image = styled.img`
   height: 100%;
   width: 100%;
   border-radius: 30px;
+  filter: grayscale(100%);
+  transition: filter 250ms linear;
+  &:hover {
+    filter: grayscale(0%);
+  }
 
   /* padding: 10px; */
 `;
 const MailLocContainer = styled.div`
   /* border: 1px solid red; */
-  padding: 5px 0;
+  padding: 20px 0 10px;
 `;
 const MailDiv = styled.div`
   padding: 5px 0;
@@ -154,7 +195,7 @@ const ButtonContainer = styled.div`
   /* border: 1px solid green; */
   display: flex;
   justify-content: center;
-  padding: 15px 0 28px 0;
+  padding: 25px 0 28px 0;
   :hover {
     cursor: pointer;
     transform: scale(1.06);
@@ -185,12 +226,14 @@ const Button = styled.button`
 const RightBody = styled.div`
   /* border: 2px solid green; */
   padding: 10px;
-  height: 500px;
-  overflow-y: scroll;
+  /* height: 500px; */
+  /* overflow-y: scroll; */
   background-color: var(--app-background);
 `;
 const HeadBody = styled.div`
   /* border: 1px solid blue; */
+  width: fit-content;
+  padding: 30px 0;
   /* display: flex;
   flex-direction: column; */
   /* gap: 5px; */
@@ -199,10 +242,10 @@ const HeadBody = styled.div`
 
 const HeadIst = styled.p`
   /* color: white; */
-  font-size: 50px;
+  font-size: 65px;
   /* padding: 0 137px; */
   letter-spacing: 1px;
-  text-align: center;
+  /* text-align: center; */
   margin: 0;
   padding-bottom: 20px;
   color: var(--primary-text-color);
@@ -221,8 +264,8 @@ const Head2nd = styled.p`
 `;
 const Head3rd = styled.p`
   color: var(--primary-text-color);
-  font-size: 50px;
-  text-align: center;
+  font-size: 60px;
+  /* text-align: center; */
   margin: 0;
   /* border: 2px solid blue; */
   @media screen {
@@ -231,10 +274,10 @@ const Head3rd = styled.p`
 `;
 const DetailBody = styled.div`
   /* border: 1px solid red; */
-  /* padding: 20px; */
+  /* padding: 0 0; */
 `;
 const DetailDiv = styled.div`
-  padding: 0 50px;
+  /* padding: 0 50px; */
   @media (max-width: 700px) {
     padding: 0 10px;
   }
@@ -262,7 +305,7 @@ const Detail2 = styled.p`
 const CircleBody = styled.div`
   /* border: 1px solid red; */
   /* padding: 30px; */
-  margin-top: 30px;
+  margin-top: 35px;
   display: grid;
   grid-template-columns: 3fr 1fr;
 `;
@@ -319,17 +362,26 @@ const IconsContainer = styled.div`
   display: flex;
   flex-direction: column;
   border-radius: 30px;
-  gap: 10px;
+  gap: 20px;
   /* flex: ; */
-  :hover {
+  /* :hover {
     cursor: pointer;
     color: green;
+  } */
+  > svg {
+    cursor: pointer;
+    color: grey;
+    font-size: 18px;
+    /* background-color: blue; */
+    :hover {
+      color: green;
+    }
   }
 `;
 const ExpBody = styled.div`
   /* border: 1px solid white; */
-  padding: 10px;
-  margin-top: 20px;
+  padding: 40px 0;
+  /* margin-top: 20px; */
   display: grid;
   grid-template-columns: 1fr 1fr;
 `;
@@ -344,7 +396,6 @@ const ProjectContainer = styled.div`
 `;
 const IntroDiv = styled.div`
   /* border: 1px solid red; */
-  margin-top: 10px;
   display: flex;
   align-items: center;
   gap: 6px;
@@ -391,14 +442,25 @@ const DetailPro = styled.p`
   /* padding-top: 10px; */
   /* text-align: center; */
 `;
-const IntroductionContainer = styled.div``;
-const AboutContainer = styled.div``;
-const ResumeContainer = styled.div``;
+const IntroductionContainer = styled.div`
+  min-height: 90vh;
+  padding-top: 20px;
+  /* border: 2px solid blue; */
+`;
+const AboutContainer = styled.div`
+  min-height: 80vh;
+`;
+const ResumeContainer = styled.div`
+  min-height: 100vh;
+`;
 const AboutDiv = styled.div`
   /* border: 1px solid white; */
+  padding: 30px 0 20px;
+
+  /* padding */
   letter-spacing: 1px;
   text-align: center;
-  margin: 0;
+  /* margin: 0; */
   /* padding-bottom: 20px; */
   color: var(--primary-text-color);
   span {
@@ -428,6 +490,7 @@ const About = styled.p`
 const ResumeBody = styled.div`
   /* border: 1px solid white; */
   /* text-align: left; */
+  padding: 30px 0;
 `;
 const ResumeHead = styled.p`
   /* color: var(--primary-text-color); */
@@ -486,7 +549,9 @@ const IstCoName = styled.p`
 `;
 
 const IstExpContainer = styled.div``;
-const SkillsContainer = styled.div``;
+const SkillsContainer = styled.div`
+  min-height: 90vh;
+`;
 const SkillsIcon = styled.div`
   border: 1px solid grey;
   width: 4.2rem;
@@ -496,6 +561,16 @@ const SkillsIcon = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  .brand-icon {
+    color: grey;
+    text-align: center;
+    font-size: 45px;
+    transition: color 300ms linear;
+  }
+
+  &:hover svg {
+    color: ${({ hoverColor }) => (hoverColor ? hoverColor : "grey")};
+  }
 `;
 const SkillsDiv = styled.div``;
 const SkillIconBody = styled.div`
@@ -512,6 +587,9 @@ const SkillsBody = styled.div`
   display: flex;
   gap: 50px;
   flex-wrap: wrap;
+  @media (max-width: 700px) {
+    width: auto;
+  }
 `;
 const Percent = styled.p`
   color: var(--primary-text-color);
@@ -526,7 +604,9 @@ const SkillName = styled.p`
   /* letter-spacing: 1px; */
 `;
 
-const MyDetailsContainer = styled.div``;
+const MyDetailsContainer = styled.div`
+  /* margin-top: 40px; */
+`;
 export {
   Main,
   OuterContainer,
@@ -600,4 +680,6 @@ export {
   SkillIconBody,
   SkillName,
   MyDetailsContainer,
+  NavigationContainer,
+  NavigationBody,
 };
