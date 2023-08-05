@@ -1,8 +1,14 @@
+import { useEffect } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import IndexComponent from "./components/IndexComponent/IndexComponent";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 function App() {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return (
     // <div className="App">
     //   <header className="App-header">

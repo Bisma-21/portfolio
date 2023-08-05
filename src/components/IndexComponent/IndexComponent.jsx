@@ -174,7 +174,7 @@ const IndexComponent = () => {
         </LeftContainer>
         <RightContainer>
           <RightBody>
-            <IntroductionContainer id="#home">
+            <IntroductionContainer>
               <IntroDiv>
                 <IntroBody>
                   <LuHome style={{ color: "grey", fontSize: "12px" }} />
@@ -204,7 +204,7 @@ const IndexComponent = () => {
                   <DetailExp>Years of experience</DetailExp>
                 </ExpContainer>
                 <ProjectContainer>
-                  <NumberPro>4+</NumberPro>
+                  <NumberPro>04+</NumberPro>
                   <DetailPro>Projects Completed</DetailPro>
                 </ProjectContainer>
               </ExpBody>
@@ -220,7 +220,7 @@ const IndexComponent = () => {
             </IntroductionContainer>
             <AboutContainer>
               <IntroDiv>
-                <IntroBody>
+                <IntroBody data-aos="fade-up" data-aos-duration="800">
                   <BsFillPersonFill
                     style={{ color: "grey", fontSize: "12px" }}
                   />
@@ -228,13 +228,21 @@ const IndexComponent = () => {
                 </IntroBody>
               </IntroDiv>
               <AboutDiv>
-                <About>
+                <About
+                  data-aos="fade-up"
+                  data-aos-duration="800"
+                  data-aos-delay="200"
+                >
                   Every great design begin with an even{" "}
                   <span> Better story</span>
                 </About>
               </AboutDiv>
               <DetailBody>
-                <AboutDetailDiv>
+                <AboutDetailDiv
+                  data-aos="fade-up"
+                  data-aos-duration="800"
+                  data-aos-delay="250"
+                >
                   <AboutDetail>
                     I design and code beautifully simple things and i love what
                     i do!. I design and code beautifully simple things and i
@@ -252,17 +260,21 @@ const IndexComponent = () => {
             </AboutContainer>
             <ResumeContainer>
               <IntroDiv>
-                <IntroBody>
+                <IntroBody data-aos="fade-up" data-aos-duration="800">
                   <GiSuitcase style={{ color: "grey", fontSize: "12px" }} />
                   <Intro>Resume</Intro>
                 </IntroBody>
               </IntroDiv>
-              <ResumeBody>
+              <ResumeBody
+                data-aos="fade-up"
+                data-aos-duration="800"
+                data-aos-delay="250"
+              >
                 <ResumeHead>
                   Education & <span>Experience</span>
                 </ResumeHead>
               </ResumeBody>
-              <IstExpContainer>
+              <IstExpContainer data-aos="zoom-in-up" data-aos-duration="800">
                 <ExpDiv>
                   <DotDiv>
                     <Dot>
@@ -276,7 +288,11 @@ const IndexComponent = () => {
                   <IstCoName>Vibgyor Web Technologies , Noida.</IstCoName>
                 </IstExpDiv>
               </IstExpContainer>
-              <IstExpContainer>
+              <IstExpContainer
+                data-aos="zoom-in-up"
+                data-aos-duration="800"
+                data-aos-delay="300"
+              >
                 <ExpDiv>
                   <DotDiv>
                     <Dot>
@@ -290,7 +306,11 @@ const IndexComponent = () => {
                   <IstCoName>Gortnm Innovations , Noida</IstCoName>
                 </IstExpDiv>
               </IstExpContainer>
-              <IstExpContainer>
+              <IstExpContainer
+                data-aos="zoom-in-up"
+                data-aos-duration="800"
+                data-aos-delay="500"
+              >
                 <ExpDiv>
                   <DotDiv>
                     <Dot>
@@ -304,7 +324,11 @@ const IndexComponent = () => {
                   <IstCoName>Kashmir University, Kashmir</IstCoName>
                 </IstExpDiv>
               </IstExpContainer>
-              <IstExpContainer>
+              <IstExpContainer
+                data-aos="zoom-in-up"
+                data-aos-duration="800"
+                data-aos-delay="700"
+              >
                 <ExpDiv>
                   <DotDiv>
                     <Dot>
@@ -321,69 +345,108 @@ const IndexComponent = () => {
             </ResumeContainer>
             <SkillsContainer>
               <IntroDiv>
-                <IntroBody>
+                <IntroBody data-aos="fade-up" data-aos-duration="800">
                   <BiSolidBuilding
                     style={{ color: "grey", fontSize: "12px" }}
                   />
                   <Intro>Skills</Intro>
                 </IntroBody>
               </IntroDiv>
-              <ResumeBody>
+              <ResumeBody
+                data-aos="fade-up"
+                data-aos-duration="800"
+                data-aos-delay="250"
+              >
                 <ResumeHead>
                   My <span>Skills</span>
                 </ResumeHead>
               </ResumeBody>
               <SkillsDiv>
                 <SkillsBody>
-                  <SkillIconBody>
+                  <SkillIconBody
+                    data-aos="zoom-in-left"
+                    data-aos-duration="800"
+                  >
                     <SkillsIcon hoverColor="#f06529">
                       <AiFillHtml5 className="brand-icon" />
                     </SkillsIcon>
                     <SkillName>Html</SkillName>
                   </SkillIconBody>
-                  <SkillIconBody>
+                  <SkillIconBody
+                    data-aos="zoom-in-left"
+                    data-aos-duration="800"
+                    data-aos-delay="300"
+                  >
                     <SkillsIcon hoverColor="#264de4">
                       <IoLogoCss3 className="brand-icon" />
                     </SkillsIcon>
                     <SkillName>Css</SkillName>
                   </SkillIconBody>
-                  <SkillIconBody>
+                  <SkillIconBody
+                    data-aos="zoom-in-left"
+                    data-aos-duration="800"
+                    data-aos-delay="500"
+                  >
                     <SkillsIcon hoverColor="#F0DB4F">
                       <RiJavascriptFill className="brand-icon" />
                     </SkillsIcon>
                     <SkillName>Javascript</SkillName>
                   </SkillIconBody>
-                  <SkillIconBody>
+                  <SkillIconBody
+                    data-aos="zoom-in-left"
+                    data-aos-duration="800"
+                    data-aos-delay="700"
+                  >
                     <SkillsIcon hoverColor="#3c873a">
                       <BiLogoNodejs className="brand-icon" />
                     </SkillsIcon>
                     <SkillName>Node js</SkillName>
                   </SkillIconBody>
-                  <SkillIconBody>
+                  <SkillIconBody
+                    data-aos="zoom-in-left"
+                    data-aos-duration="800"
+                    data-aos-delay="900"
+                  >
                     <SkillsIcon hoverColor="#61DBFB">
                       <BiLogoReact className="brand-icon" />
                     </SkillsIcon>
                     <SkillName>React js</SkillName>
                   </SkillIconBody>
-                  <SkillIconBody>
+                  <SkillIconBody
+                    data-aos="zoom-in-left"
+                    data-aos-duration="800"
+                    data-aos-delay="1100"
+                  >
                     <SkillsIcon hoverColor="#764ABC">
                       <TbBrandRedux className="brand-icon" />
                     </SkillsIcon>
                     <SkillName>Redux</SkillName>
                   </SkillIconBody>
-                  <SkillIconBody>
+                  <SkillIconBody
+                    data-aos="zoom-in-left"
+                    data-aos-duration="800"
+                    data-aos-delay="1300"
+                  >
                     <SkillsIcon hoverColor="#3FA037">
                       <SiMongodb className="brand-icon" />
                     </SkillsIcon>
                     <SkillName>Mongo Db</SkillName>
                   </SkillIconBody>{" "}
-                  <SkillIconBody>
+                  <SkillIconBody
+                    data-aos="zoom-in-left"
+                    data-aos-duration="800"
+                    data-aos-delay="1500"
+                  >
                     <SkillsIcon hoverColor="#00758F">
                       <TbBrandMysql className="brand-icon" />
                     </SkillsIcon>
                     <SkillName>My Sql</SkillName>
                   </SkillIconBody>
-                  <SkillIconBody>
+                  <SkillIconBody
+                    data-aos="zoom-in-left"
+                    data-aos-duration="800"
+                    data-aos-delay="1700"
+                  >
                     <SkillsIcon hoverColor="var(--primary-text-color)">
                       <BsGithub className="brand-icon" />
                     </SkillsIcon>
@@ -394,11 +457,15 @@ const IndexComponent = () => {
             </SkillsContainer>
             <MyDetailsContainer>
               <IntroDiv>
-                <IntroBody>
+                <IntroBody data-aos="fade-up" data-aos-duration="800">
                   <AiOutlineMail style={{ color: "grey", fontSize: "12px" }} />
                 </IntroBody>
               </IntroDiv>
-              <ResumeBody>
+              <ResumeBody
+                data-aos="fade-up"
+                data-aos-duration="800"
+                data-aos-delay="250"
+              >
                 <ResumeHead>
                   Let's Work<span>Together!</span>
                 </ResumeHead>
