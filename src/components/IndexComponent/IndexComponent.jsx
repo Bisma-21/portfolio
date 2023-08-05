@@ -76,6 +76,11 @@ import {
   MyDetailsContainer,
   NavigationContainer,
   NavigationBody,
+  FormContainer,
+  FormDiv,
+  Section,
+  Data,
+  ButtonDiv
 } from "./IndexStyle";
 import { ImLocation2 } from "react-icons/im";
 import { IoMdMailUnread, IoLogoCss3 } from "react-icons/io";
@@ -469,6 +474,37 @@ const IndexComponent = () => {
                 <ResumeHead>
                   Let's Work<span>Together!</span>
                 </ResumeHead>
+                <Mail>bismahmanxoor1@gmail.com</Mail>
+                <FormContainer>
+                  <form action="">
+                    <FormDiv>
+                      <Section>
+                        <Data>
+                          <label htmlFor="" style={{ color: "var(--primary-text-color)" }}>Full Name</label>
+                          <input type="text" style={{ background: "var(--body-background)", color: "var(--primary-text-color)", padding: "7px 5px", border: "none" }} placeholder="Your Name" />
+                        </Data>
+                        <Data>
+                          <label htmlFor="" style={{ color: "var(--primary-text-color)" }}>Email</label>
+                          <input type="text" style={{ background: "var(--body-background)", padding: "7px 5px", border: "none" }} placeholder="Your Email" />
+                        </Data>
+                      </Section>
+                      <Section>
+                        <Data>
+                          <label htmlFor="" style={{ color: "var(--primary-text-color)" }}>Phone</label>
+                          <input type="text" style={{ background: "var(--body-background)", padding: "7px 5px", border: "none" }} placeholder="Your Phone" />
+                        </Data>
+                        <Data>
+                          <label htmlFor="" style={{ color: "var(--primary-text-color)" }}>Message</label>
+                          {/* <input type="text" style={{ background: "black", padding: "7px 0" }} placeholder="Your Message" /> */}
+                          <textarea name="" id="" cols="30" rows="10" style={{ background: "var(--body-background)", padding: "7px 5px", height: "15px", border: "none" }} placeholder="Your Message"></textarea>
+                        </Data>
+                      </Section>
+                      <ButtonDiv>
+                        <Button className="submit-btn">Submit</Button>
+                      </ButtonDiv>
+                    </FormDiv>
+                  </form>
+                </FormContainer>
               </ResumeBody>
             </MyDetailsContainer>
           </RightBody>

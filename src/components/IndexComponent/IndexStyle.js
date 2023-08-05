@@ -607,6 +607,41 @@ const SkillName = styled.p`
 const MyDetailsContainer = styled.div`
   /* margin-top: 40px; */
 `;
+const FormContainer = styled.div`
+  margin-top: 10px;
+`;
+const FormDiv = styled.div`
+  /* margin-top: 40px; */
+  /* border: 1px solid red; */
+`;
+const Section = styled.div`
+  /* margin-top: 40px; */
+  /* border: 1px solid green; */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 10px 0;
+  gap: 15px;
+`;
+const Data = styled.div`
+  /* margin-top: 40px; */
+  /* border: 1px solid green; */
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+`;
+const ButtonDiv = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* border: 1px solid white; */
+  .submit-btn {
+    margin-top: 15px;
+    width: 7rem;
+    text-align: center;
+    height: 2.5rem;
+    padding: 0;
+  }
+`;
 export {
   Main,
   OuterContainer,
@@ -682,4 +717,9 @@ export {
   MyDetailsContainer,
   NavigationContainer,
   NavigationBody,
+  FormContainer,
+  FormDiv,
+  Section,
+  Data,
+  ButtonDiv,
 };
