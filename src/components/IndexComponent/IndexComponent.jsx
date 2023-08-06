@@ -93,6 +93,8 @@ import {
   BiLogoReact,
 } from "react-icons/bi";
 import { BsArrowUpShort, BsDot, BsGithub } from "react-icons/bs";
+import { FaShapes } from "react-icons/fa";
+import { GiGraduateCap } from "react-icons/gi";
 import { GiSuitcase } from "react-icons/gi";
 import { LuHome } from "react-icons/lu";
 import { SiMongodb } from "react-icons/si";
@@ -100,22 +102,45 @@ import { SiMongodb } from "react-icons/si";
 import { TbBrandRedux, TbBrandMysql } from "react-icons/tb";
 import { RiJavascriptFill } from "react-icons/ri";
 import { BsFillPersonFill } from "react-icons/bs";
+import { useRef } from "react";
 
 // import { AiFillLinkedin } from "react-icons/ai"
 const IndexComponent = () => {
+  const downloadRef = useRef(null);
+  const homeRef = useRef(null);
+  const aboutRef = useRef(null);
+  const educationRef = useRef(null);
+  const skillsRef = useRef(null);
   const changeTheme = () => {
-    const root = document.querySelector(":root");
-    const computedStyles = getComputedStyle(root);
-    if (computedStyles.getPropertyValue("--theme") == "dark") {
-      root.style.setProperty("--app-background", "rgb(240, 240, 240)");
-      root.style.setProperty("--primary-text-color", "black");
-      root.style.setProperty("--theme", "light");
-      root.style.setProperty("--body-background", "white");
-    } else {
-      root.style.setProperty("--app-background", "rgb(30, 30, 30)");
-      root.style.setProperty("--theme", "dark");
-      root.style.setProperty("--primary-text-color", "white");
-      root.style.setProperty("--body-background", "black");
+    downloadRef.current.click();
+    // const root = document.querySelector(":root");
+    // const computedStyles = getComputedStyle(root);
+    // if (computedStyles.getPropertyValue("--theme") == "dark") {
+    //   root.style.setProperty("--app-background", "rgb(240, 240, 240)");
+    //   root.style.setProperty("--primary-text-color", "black");
+    //   root.style.setProperty("--theme", "light");
+    //   root.style.setProperty("--body-background", "white");
+    // } else {
+    //   root.style.setProperty("--app-background", "rgb(30, 30, 30)");
+    //   root.style.setProperty("--theme", "dark");
+    //   root.style.setProperty("--primary-text-color", "white");
+    //   root.style.setProperty("--body-background", "black");
+    // }
+  };
+  const navigationHandler = (type) => {
+    switch (type) {
+      case "home":
+        homeRef.current.scrollIntoView();
+        break;
+      case "about":
+        aboutRef.current.scrollIntoView();
+        break;
+      case "education":
+        educationRef.current.scrollIntoView();
+        break;
+      case "skills":
+        skillsRef.current.scrollIntoView();
+        break;
     }
   };
   return (
@@ -166,16 +191,23 @@ const IndexComponent = () => {
             <ButtonContainer>
               <ButtonBody>
                 <Button onClick={changeTheme}>
-                  <span>H</span>IRE <span>M</span>E!
+                  <span>R</span>esume
+                  {/* <span>M</span>E! */}
                 </Button>
+                <a
+                  href="/bisma-manzoor.pdf"
+                  style={{ display: "none" }}
+                  ref={downloadRef}
+                  download="bisma-manzoor.pdf"
+                />
               </ButtonBody>
             </ButtonContainer>
           </LeftBody>
         </LeftContainer>
         <RightContainer>
           <RightBody>
-            <IntroductionContainer>
-              <IntroDiv>
+            <IntroductionContainer ref={homeRef}>
+              <IntroDiv data-aos="fade-left" data-aos-duration="800">
                 <IntroBody>
                   <LuHome style={{ color: "grey", fontSize: "12px" }} />
                   <Intro>Introduce</Intro>
@@ -218,9 +250,9 @@ const IndexComponent = () => {
                 </CircleDiv>
               </CircleBody>
             </IntroductionContainer>
-            <AboutContainer>
+            <AboutContainer ref={aboutRef}>
               <IntroDiv>
-                <IntroBody data-aos="fade-up" data-aos-duration="800">
+                <IntroBody data-aos="fade-left" data-aos-duration="800">
                   <BsFillPersonFill
                     style={{ color: "grey", fontSize: "12px" }}
                   />
@@ -258,9 +290,9 @@ const IndexComponent = () => {
                 </AboutDetailDiv>
               </DetailBody>
             </AboutContainer>
-            <ResumeContainer>
+            <ResumeContainer ref={educationRef}>
               <IntroDiv>
-                <IntroBody data-aos="fade-up" data-aos-duration="800">
+                <IntroBody data-aos="fade-left" data-aos-duration="800">
                   <GiSuitcase style={{ color: "grey", fontSize: "12px" }} />
                   <Intro>Resume</Intro>
                 </IntroBody>
@@ -343,9 +375,9 @@ const IndexComponent = () => {
                 </IstExpDiv>
               </IstExpContainer>
             </ResumeContainer>
-            <SkillsContainer>
+            <SkillsContainer ref={skillsRef}>
               <IntroDiv>
-                <IntroBody data-aos="fade-up" data-aos-duration="800">
+                <IntroBody data-aos="fade-left" data-aos-duration="800">
                   <BiSolidBuilding
                     style={{ color: "grey", fontSize: "12px" }}
                   />
@@ -457,7 +489,7 @@ const IndexComponent = () => {
             </SkillsContainer>
             <MyDetailsContainer>
               <IntroDiv>
-                <IntroBody data-aos="fade-up" data-aos-duration="800">
+                <IntroBody data-aos="fade-left" data-aos-duration="800">
                   <AiOutlineMail style={{ color: "grey", fontSize: "12px" }} />
                 </IntroBody>
               </IntroDiv>
@@ -477,10 +509,15 @@ const IndexComponent = () => {
           <NavigationBody>
             <IconsDiv>
               <IconsContainer>
-                <AiFillHome />
+                <AiFillHome onClick={navigationHandler.bind(this, "home")} />
 
-                <BsFillPersonFill />
-                <BiSolidBuilding />
+                <BsFillPersonFill
+                  onClick={navigationHandler.bind(this, "about")}
+                />
+                <GiGraduateCap
+                  onClick={navigationHandler.bind(this, "education")}
+                />
+                <FaShapes onClick={navigationHandler.bind(this, "skills")} />
               </IconsContainer>
             </IconsDiv>
           </NavigationBody>

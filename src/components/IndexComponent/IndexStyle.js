@@ -12,8 +12,11 @@ const OuterContainer = styled.div`
   grid-template-columns: 1.2fr 3fr 0.5fr;
   border-radius: 5px;
   gap: 30px 0;
-  @media (max-width: 700px) {
+  @media (max-width: 999px) {
     grid-template-columns: 1fr;
+  }
+  @media (min-width: 1000px) and (max-width: 1250px) {
+    grid-template-columns: 1.2fr 2fr;
   }
   /* max-height: 800px; */
 `;
@@ -22,10 +25,9 @@ const LeftContainer = styled.div`
   /* padding: 10px; */
   border-radius: 5px;
   margin: 10px;
-  @media (max-width: 700px) {
-    /* grid-template-columns: 1fr; */
-    display: none;
-  }
+  /* @media (max-width: 700px) {
+
+  } */
 
   /* background-color: black; */
   /* max-height: 500px; */
@@ -33,14 +35,14 @@ const LeftContainer = styled.div`
 const RightContainer = styled.div`
   /* border: 2px solid red; */
   padding-left: 100px;
-  @media (max-width: 700px) {
+  @media (max-width: 1250px) {
     padding-left: 0;
   }
   /* padding: 10px; */
 `;
 const NavigationContainer = styled.div`
   /* border: 2px solid blue; */
-  @media (max-width: 700px) {
+  @media (max-width: 1250px) {
     /* grid-template-columns: 1fr; */
     display: none;
   }
@@ -51,6 +53,9 @@ const NavigationBody = styled.div`
   /* border: 1px solid lime; */
   top: 50%;
   transform: translateY(-50%);
+  @media (max-width: 1250px) {
+    display: none;
+  }
 `;
 const LeftBody = styled.div`
   /* border: 2px solid red; */
@@ -61,7 +66,11 @@ const LeftBody = styled.div`
   position: fixed;
   width: 100%;
   border: 1px solid grey;
-  border-radius: 10px;
+  border-radius: 20px;
+  @media (max-width: 999px) {
+    position: static;
+    transform: translateY(0);
+  }
   /* padding: 10px; */
   /* max-height: 400px; */
 `;
@@ -124,6 +133,7 @@ const Image = styled.img`
   height: 100%;
   width: 100%;
   border-radius: 30px;
+  object-fit: cover;
   filter: grayscale(100%);
   transition: filter 250ms linear;
   &:hover {
@@ -253,7 +263,7 @@ const HeadIst = styled.p`
     color: #5ccf5c;
     font-family: "Brush Script MT", cursive;
   }
-  @media (max-width: 700px) {
+  @media (max-width: 999px) {
     font-size: 40px;
   }
 `;
@@ -306,14 +316,14 @@ const CircleBody = styled.div`
   /* border: 1px solid red; */
   /* padding: 30px; */
   margin-top: 35px;
-  display: grid;
-  grid-template-columns: 3fr 1fr;
+  /* display: grid; */
+  /* grid-template-columns: 3fr 1fr; */
 `;
 const CircleDiv = styled.div`
   /* border: 1px solid greenyellow; */
   padding: 20px 40px;
   display: flex;
-  justify-content: end;
+  justify-content: center;
 `;
 const IconsDiv = styled.div`
   /* border: 1px solid blue; */
