@@ -5,6 +5,7 @@
   --primary-text-color: white;
   --theme: dark;
   --secondary-color: green;
+  --input-border: grey;
 }
 
 html {

@@ -136,6 +136,7 @@ const Image = styled.img`
   object-fit: cover;
   filter: grayscale(100%);
   transition: filter 250ms linear;
+  /* pointer-events: none; */
   &:hover {
     filter: grayscale(0%);
   }
@@ -411,12 +412,12 @@ const IntroDiv = styled.div`
   gap: 6px;
 `;
 const Intro = styled.p`
-  color: grey;
+  color: ${({ active }) => (active ? "green" : "grey")};
   margin: 0;
   font-size: 12px;
 `;
 const IntroBody = styled.div`
-  border: 1px solid grey;
+  border: ${({ active }) => (active ? "1px solid green" : "1px solid grey")};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -638,18 +639,47 @@ const Data = styled.div`
   display: flex;
   flex-direction: column;
   gap: 5px;
+  > input {
+    background-color: var(--app-background);
+    border: none;
+    border-bottom: 1px solid var(--input-border);
+    color: var(--primary-text-color);
+  }
+  > input:focus {
+    outline: none;
+  }
+  > textarea {
+    background-color: var(--app-background);
+    font-family: sans-serif;
+    border: none;
+    border-bottom: 1px solid var(--input-border);
+    padding: 7px 5px;
+    color: var(--primary-text-color);
+  }
+  > textarea:focus {
+    outline: none;
+  }
 `;
 const ButtonDiv = styled.div`
-  display: flex;
+  /* display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
+  margin-top: 30px;
   /* border: 1px solid white; */
   .submit-btn {
     margin-top: 15px;
-    width: 7rem;
+    width: 9rem;
     text-align: center;
     height: 2.5rem;
     padding: 0;
+    cursor: pointer;
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.06);
+      transition: transform 200ms linear;
+      background-color: grey;
+      color: white;
+    }
   }
 `;
 export {
