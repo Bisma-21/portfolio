@@ -101,6 +101,7 @@ const Name = styled.p`
   font-weight: 600;
   letter-spacing: 1px;
   font-size: 22px;
+  user-select: none;
 `;
 const Profession = styled.p`
   /* border: 2px solid red; */
@@ -111,6 +112,7 @@ const Profession = styled.p`
   letter-spacing: 0.4px;
   width: 50%;
   font-size: 12px;
+  user-select: none;
   /* display: flex;
   justify-content: end; */
 `;
@@ -158,6 +160,7 @@ const MailDiv = styled.div`
   /* padding: 0; */
 `;
 const Mail = styled.p`
+  user-select: none;
   padding: 0;
   margin: 0;
   color: white;
@@ -179,6 +182,7 @@ const Location = styled.p`
   color: white;
   letter-spacing: 0.2px;
   color: var(--primary-text-color);
+  user-select: none;
 `;
 const IconContainer = styled.div`
   padding: 12px 10px;
@@ -206,7 +210,7 @@ const ButtonContainer = styled.div`
   /* border: 1px solid green; */
   display: flex;
   justify-content: center;
-  padding: 25px 0 28px 0;
+  padding: 15px 0 28px 0;
   :hover {
     cursor: pointer;
     transform: scale(1.06);
@@ -221,6 +225,7 @@ const ButtonBody = styled.div`
   border-radius: 20px;
 `;
 const Button = styled.button`
+  user-select: none;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   width: 100%;
   border-radius: 20px;
@@ -261,6 +266,7 @@ const HeadBody = styled.div`
 
 const HeadIst = styled.p`
   /* color: white; */
+  user-select: none;
   font-size: 65px;
   /* padding: 0 137px; */
   letter-spacing: 1px;
@@ -284,6 +290,7 @@ const Head2nd = styled.p`
 const Head3rd = styled.p`
   color: var(--primary-text-color);
   font-size: 60px;
+  user-select: none;
   /* text-align: center; */
   margin: 0;
   /* border: 2px solid blue; */
@@ -309,15 +316,18 @@ const AboutDetailDiv = styled.div`
 `;
 const Detail = styled.p`
   color: grey;
+  user-select: none;
   /* text-align: center; */
 `;
 const AboutDetail = styled.p`
   color: grey;
+  user-select: none;
   line-height: 24px;
   /* text-align: left; */
 `;
 const Detail2 = styled.p`
   color: grey;
+  user-select: none;
   /* text-align: center; */
 `;
 
@@ -423,6 +433,7 @@ const Intro = styled.p`
   color: ${({ active }) => (active ? "green" : "grey")};
   margin: 0;
   font-size: 12px;
+  user-select: none;
 `;
 const IntroBody = styled.div`
   border: ${({ active }) => (active ? "1px solid green" : "1px solid grey")};
@@ -436,6 +447,7 @@ const IntroBody = styled.div`
 `;
 
 const NumberExp = styled.p`
+  user-select: none;
   color: var(--secondary-color);
   margin: 0;
   text-align: center;
@@ -444,12 +456,14 @@ const NumberExp = styled.p`
 `;
 const DetailExp = styled.p`
   color: grey;
+  user-select: none;
   margin: 0;
   /* padding-top: 10px; */
   text-align: center;
 `;
 const NumberPro = styled.p`
   color: var(--secondary-color);
+  user-select: none;
   margin: 0;
   /* text-align: center; */
   font-size: 45px;
@@ -457,6 +471,7 @@ const NumberPro = styled.p`
 `;
 const DetailPro = styled.p`
   color: grey;
+  user-select: none;
   margin: 0;
   /* padding-top: 10px; */
   /* text-align: center; */
@@ -491,6 +506,7 @@ const AboutDiv = styled.div`
   }
 `;
 const About = styled.p`
+  user-select: none;
   font-size: 50px;
   /* padding: 0 137px; */
   letter-spacing: 1px;
@@ -512,6 +528,7 @@ const ResumeBody = styled.div`
   padding: 30px 0;
 `;
 const ResumeHead = styled.p`
+  user-select: none;
   /* color: var(--primary-text-color); */
   font-size: 40px;
   /* padding: 0 137px; */
@@ -541,6 +558,7 @@ const ExpDiv = styled.div`
   align-items: center;
 `;
 const Date = styled.p`
+  user-select: none;
   color: grey;
   /* border: 1px solid white; */
   margin: 0;
@@ -561,10 +579,12 @@ const IstHead = styled.p`
   padding-left: 35px;
   font-size: 25px;
   margin: 0;
+  user-select: none;
 `;
 const IstCoName = styled.p`
   color: grey;
   padding-left: 35px;
+  user-select: none;
 `;
 
 const IstExpContainer = styled.div``;
@@ -616,6 +636,7 @@ const Percent = styled.p`
   letter-spacing: 1px;
 `;
 const SkillName = styled.p`
+  user-select: none;
   color: var(--primary-text-color);
   font-size: 12px;
   font-weight: 600;
@@ -694,6 +715,17 @@ const ButtonDiv = styled.div`
       color: white;
     }
   }
+`;
+const CopyRightContainer = styled.div`
+  /* border: 1px solid red; */
+  padding: 5px;
+`;
+
+const CopyrightText = styled.p`
+  color: grey;
+  text-align: center;
+  padding: 0;
+  margin: 0;
 `;
 export {
   Main,
@@ -775,4 +807,6 @@ export {
   Section,
   Data,
   ButtonDiv,
+  CopyRightContainer,
+  CopyrightText,
 };

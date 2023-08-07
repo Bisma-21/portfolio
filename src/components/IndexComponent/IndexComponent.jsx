@@ -81,6 +81,8 @@ import {
   Section,
   Data,
   ButtonDiv,
+  CopyRightContainer,
+  CopyrightText
 } from "./IndexStyle";
 import { ImLocation2 } from "react-icons/im";
 import { IoMdMailUnread, IoLogoCss3 } from "react-icons/io";
@@ -164,7 +166,7 @@ const IndexComponent = () => {
     downloadRef.current.click();
     // const root = document.querySelector(":root");
     // const computedStyles = getComputedStyle(root);
-    // if (computedStyles.getPropertyValue("--theme") == "dark") {
+    // if (computedStyles.getPropertyValue("--theme") === "dark") {
     //   root.style.setProperty("--app-background", "rgb(240, 240, 240)");
     //   root.style.setProperty("--primary-text-color", "black");
     //   root.style.setProperty("--theme", "light");
@@ -177,25 +179,25 @@ const IndexComponent = () => {
     // }
   };
   const nameHandler = async (e) => {
-    // console.log("nameHandler==", e.target.value)
+    // console.log("nameHandler===", e.target.value)
     setName(e.target.value)
   }
   const emailHandler = async (e) => {
-    // console.log("emailHandler==", e.target.value)
+    // console.log("emailHandler===", e.target.value)
     setEmail(e.target.value)
   }
   const phoneHandler = async (e) => {
-    // console.log("phoneHandler==", e.target.value)
+    // console.log("phoneHandler===", e.target.value)
     setPhone(e.target.value)
   }
   const messageHandler = async (e) => {
-    // console.log("messageHandler==", e.target.value)
+    // console.log("messageHandler===", e.target.value)
     setMessage(e.target.value)
   }
   console.log(name, phone, email, message)
   const submitHandler = async () => {
     try {
-      // console.log("submitHandler==", name)
+      // console.log("submitHandler===", name)
       setLoader(true)
       const response = await fetch("https://portfolio-backend-ak7u.onrender.com/send-mail", {
         method: "POST",
@@ -204,8 +206,8 @@ const IndexComponent = () => {
         },
         body: JSON.stringify({ name, email, phone, message })
       })
-      console.log("response==>", response.status)
-      if (response.status == 200) {
+      console.log("response===>", response.status)
+      if (response.status === 200) {
         console.log("bbbbbbbbbbb", name)
         setName("")
         setPhone("")
@@ -214,7 +216,7 @@ const IndexComponent = () => {
         setLoader(false)
       }
       const result = await response.json()
-      console.log("resultt===>", result)
+      console.log("resultt====>", result)
 
       // setName("")
     } catch (error) {
@@ -288,6 +290,9 @@ const IndexComponent = () => {
                 />
               </IconBody>
             </IconContainer>
+            <CopyRightContainer>
+              <CopyrightText>@ 2023 Bisma, All Rights Reserved</CopyrightText>
+            </CopyRightContainer>
             <ButtonContainer>
               <ButtonBody>
                 <Button onClick={changeTheme}>
@@ -308,14 +313,14 @@ const IndexComponent = () => {
           <RightBody>
             <IntroductionContainer ref={homeRef}>
               <IntroDiv data-aos="fade-left" data-aos-duration="800">
-                <IntroBody active={currentSection == "home"}>
+                <IntroBody active={currentSection === "home"}>
                   <LuHome
                     style={{
-                      color: currentSection == "home" ? "green" : "grey",
+                      color: currentSection === "home" ? "green" : "grey",
                       fontSize: "12px",
                     }}
                   />
-                  <Intro active={currentSection == "home"}>Introduce</Intro>
+                  <Intro active={currentSection === "home"}>Introduce</Intro>
                 </IntroBody>
               </IntroDiv>
               <HeadBody>
@@ -360,15 +365,15 @@ const IndexComponent = () => {
                 <IntroBody
                   data-aos="fade-left"
                   data-aos-duration="800"
-                  active={currentSection == "about"}
+                  active={currentSection === "about"}
                 >
                   <BsFillPersonFill
                     style={{
-                      color: currentSection == "about" ? "green" : "grey",
+                      color: currentSection === "about" ? "green" : "grey",
                       fontSize: "12px",
                     }}
                   />
-                  <Intro active={currentSection == "about"}>About</Intro>
+                  <Intro active={currentSection === "about"}>About</Intro>
                 </IntroBody>
               </IntroDiv>
               <AboutDiv>
@@ -407,15 +412,15 @@ const IndexComponent = () => {
                 <IntroBody
                   data-aos="fade-left"
                   data-aos-duration="800"
-                  active={currentSection == "education"}
+                  active={currentSection === "education"}
                 >
                   <GiSuitcase
                     style={{
-                      color: currentSection == "education" ? "green" : "grey",
+                      color: currentSection === "education" ? "green" : "grey",
                       fontSize: "12px",
                     }}
                   />
-                  <Intro active={currentSection == "education"}>Resume</Intro>
+                  <Intro active={currentSection === "education"}>Resume</Intro>
                 </IntroBody>
               </IntroDiv>
               <ResumeBody
@@ -501,15 +506,15 @@ const IndexComponent = () => {
                 <IntroBody
                   data-aos="fade-left"
                   data-aos-duration="800"
-                  active={currentSection == "skills"}
+                  active={currentSection === "skills"}
                 >
                   <BiSolidBuilding
                     style={{
-                      color: currentSection == "skills" ? "green" : "grey",
+                      color: currentSection === "skills" ? "green" : "grey",
                       fontSize: "12px",
                     }}
                   />
-                  <Intro active={currentSection == "skills"}>Skills</Intro>
+                  <Intro active={currentSection === "skills"}>Skills</Intro>
                 </IntroBody>
               </IntroDiv>
               <ResumeBody
@@ -620,15 +625,15 @@ const IndexComponent = () => {
                 <IntroBody
                   data-aos="fade-left"
                   data-aos-duration="800"
-                  active={currentSection == "message"}
+                  active={currentSection === "message"}
                 >
                   <AiOutlineMail
                     style={{
-                      color: currentSection == "message" ? "green" : "grey",
+                      color: currentSection === "message" ? "green" : "grey",
                       fontSize: "12px",
                     }}
                   />
-                  <Intro active={currentSection == "message"}>
+                  <Intro active={currentSection === "message"}>
                     Let's connect
                   </Intro>
                 </IntroBody>
@@ -648,7 +653,7 @@ const IndexComponent = () => {
                         <Data>
                           <label
                             htmlFor=""
-                            style={{ color: "var(--primary-text-color)" }}
+                            style={{ color: "var(--primary-text-color)", userSelect: "none" }}
                           >
                             Full Name<span>*</span>
                           </label>
@@ -666,7 +671,7 @@ const IndexComponent = () => {
                         <Data>
                           <label
                             htmlFor=""
-                            style={{ color: "var(--primary-text-color)" }}
+                            style={{ color: "var(--primary-text-color)", userSelect: "none" }}
                           >
                             Email<span>*</span>
                           </label>
@@ -686,7 +691,7 @@ const IndexComponent = () => {
                         <Data>
                           <label
                             htmlFor=""
-                            style={{ color: "var(--primary-text-color)" }}
+                            style={{ color: "var(--primary-text-color)", userSelect: "none" }}
                           >
                             Phone<span>*</span>
                           </label>
@@ -705,7 +710,7 @@ const IndexComponent = () => {
                       <Data>
                         <label
                           htmlFor=""
-                          style={{ color: "var(--primary-text-color)" }}
+                          style={{ color: "var(--primary-text-color)", userSelect: "none" }}
                         >
                           Message<span>*</span>
                         </label>
@@ -742,32 +747,32 @@ const IndexComponent = () => {
                 <AiFillHome
                   onClick={navigationHandler.bind(this, "home")}
                   style={{
-                    color: currentSection == "home" ? "green" : "grey",
+                    color: currentSection === "home" ? "green" : "grey",
                   }}
                 />
 
                 <BsFillPersonFill
                   onClick={navigationHandler.bind(this, "about")}
                   style={{
-                    color: currentSection == "about" ? "green" : "grey",
+                    color: currentSection === "about" ? "green" : "grey",
                   }}
                 />
                 <GiGraduateCap
                   onClick={navigationHandler.bind(this, "education")}
                   style={{
-                    color: currentSection == "education" ? "green" : "grey",
+                    color: currentSection === "education" ? "green" : "grey",
                   }}
                 />
                 <FaShapes
                   onClick={navigationHandler.bind(this, "skills")}
                   style={{
-                    color: currentSection == "skills" ? "green" : "grey",
+                    color: currentSection === "skills" ? "green" : "grey",
                   }}
                 />
                 <BiSolidMessageDetail
                   onClick={navigationHandler.bind(this, "message")}
                   style={{
-                    color: currentSection == "message" ? "green" : "grey",
+                    color: currentSection === "message" ? "green" : "grey",
                   }}
                 />
               </IconsContainer>
