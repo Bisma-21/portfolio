@@ -113,6 +113,7 @@ import { BsFillPersonFill } from "react-icons/bs";
 import { useEffect, useRef, useState } from "react";
 import useIsInViewport from "../../hooks/useInViewport";
 import LoaderComponent from "../commons/LoaderComponent/LoaderComponent";
+import { toast } from "react-toastify";
 
 // import { AiFillLinkedin } from "react-icons/ai"
 
@@ -207,6 +208,7 @@ const IndexComponent = () => {
         body: JSON.stringify({ name, email, phone, message })
       })
       console.log("response===>", response.status)
+
       if (response.status === 200) {
         console.log("bbbbbbbbbbb", name)
         setName("")
@@ -214,10 +216,14 @@ const IndexComponent = () => {
         setEmail("")
         setMessage("")
         setLoader(false)
+        toast.success("Email has been sent.")
       }
       const result = await response.json()
       console.log("resultt====>", result)
-
+      if (response.status >= 400) {
+        setLoader(false)
+        return toast.warning(result)
+      }
       // setName("")
     } catch (error) {
       console.log(error)
@@ -729,7 +735,7 @@ const IndexComponent = () => {
                             ?
                             <Button className="submit-btn" onClick={submitHandler}>Submit</Button>
                             :
-                            <Button className="submit-btn" onClick={submitHandler}><LoaderComponent className="loader" /></Button>
+                            <Button className="submit-btn"><LoaderComponent className="loader" /></Button>
                         }
                         {/* <Button className="submit-btn" onClick={submitHandler}>Submit</Button> */}
                       </ButtonDiv>

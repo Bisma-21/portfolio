@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const CircleDiv = styled.div`
-  border: 3px solid grey;
+  border: 3.5px solid grey;
   border-top-color: transparent;
   animation: spin 1s linear infinite;
   @keyframes spin {
@@ -12,8 +12,11 @@ const CircleDiv = styled.div`
       transform: rotate(360deg);
     }
   }
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 export { CircleDiv };

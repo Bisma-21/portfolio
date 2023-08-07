@@ -235,11 +235,15 @@ const Button = styled.button`
   border: none;
   font-weight: 600;
   font-size: 19px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   .loader {
     /* background-color: red; */
     border-color: white;
     text-align: center;
-    margin-left: 50px;
+    /* margin-left: 50px; */
+
     border-top-color: transparent;
     animation: spin 1s linear infinite;
   }
