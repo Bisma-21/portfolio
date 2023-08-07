@@ -4,7 +4,12 @@
   --black: black;
   --primary-text-color: white;
   --theme: dark;
-  --secondary-color:green
+  --secondary-color: green;
+  --input-border: grey;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {

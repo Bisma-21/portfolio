@@ -80,7 +80,7 @@ import {
   FormDiv,
   Section,
   Data,
-  ButtonDiv
+  ButtonDiv,
 } from "./IndexStyle";
 import { ImLocation2 } from "react-icons/im";
 import { IoMdMailUnread, IoLogoCss3 } from "react-icons/io";
@@ -96,8 +96,11 @@ import {
   BiSolidBuilding,
   BiLogoNodejs,
   BiLogoReact,
+  BiSolidMessageDetail,
 } from "react-icons/bi";
 import { BsArrowUpShort, BsDot, BsGithub } from "react-icons/bs";
+import { FaShapes } from "react-icons/fa";
+import { GiGraduateCap } from "react-icons/gi";
 import { GiSuitcase } from "react-icons/gi";
 import { LuHome } from "react-icons/lu";
 import { SiMongodb } from "react-icons/si";
@@ -105,22 +108,84 @@ import { SiMongodb } from "react-icons/si";
 import { TbBrandRedux, TbBrandMysql } from "react-icons/tb";
 import { RiJavascriptFill } from "react-icons/ri";
 import { BsFillPersonFill } from "react-icons/bs";
+import { useEffect, useRef, useState } from "react";
+import useIsInViewport from "../../hooks/useInViewport";
 
 // import { AiFillLinkedin } from "react-icons/ai"
+
+//  https://portfolio-backend-ak7u.onrender.com/send-mail
+
 const IndexComponent = () => {
+  const [currentSection, setCurrentSection] = useState("home");
+  const downloadRef = useRef(null);
+  const homeRef = useRef(null);
+  const aboutRef = useRef(null);
+  const educationRef = useRef(null);
+  const skillsRef = useRef(null);
+  const messageRef = useRef(null);
+  //   const isHomeIntersecting = useIsInViewport(homeRef);
+  const isIntersecting = (ref, onActive) => {
+    const observer = new IntersectionObserver(
+      (entries, observer) => {
+        if (entries[0].isIntersecting) {
+          console.log("entries", entries[0].intersectionRatio, onActive);
+          setCurrentSection(onActive);
+        }
+      },
+      { threshold: 0.5 },
+    );
+    observer.observe(ref.current);
+    return observer;
+  };
+  useEffect(() => {
+    const homeObserver = isIntersecting(homeRef, "home");
+    const aboutObserver = isIntersecting(aboutRef, "about");
+    const educationObserver = isIntersecting(educationRef, "education");
+    const skillsObserver = isIntersecting(skillsRef, "skills");
+    const messageObserver = isIntersecting(messageRef, "message");
+    document.addEventListener("scroll", () => {});
+    return () => {
+      document.removeEventListener("scroll", () => {});
+      homeObserver.disconnect();
+      aboutObserver.disconnect();
+      educationObserver.disconnect();
+      skillsObserver.disconnect();
+      messageObserver.disconnect();
+    };
+  }, []);
   const changeTheme = () => {
-    const root = document.querySelector(":root");
-    const computedStyles = getComputedStyle(root);
-    if (computedStyles.getPropertyValue("--theme") == "dark") {
-      root.style.setProperty("--app-background", "rgb(240, 240, 240)");
-      root.style.setProperty("--primary-text-color", "black");
-      root.style.setProperty("--theme", "light");
-      root.style.setProperty("--body-background", "white");
-    } else {
-      root.style.setProperty("--app-background", "rgb(30, 30, 30)");
-      root.style.setProperty("--theme", "dark");
-      root.style.setProperty("--primary-text-color", "white");
-      root.style.setProperty("--body-background", "black");
+    downloadRef.current.click();
+    // const root = document.querySelector(":root");
+    // const computedStyles = getComputedStyle(root);
+    // if (computedStyles.getPropertyValue("--theme") == "dark") {
+    //   root.style.setProperty("--app-background", "rgb(240, 240, 240)");
+    //   root.style.setProperty("--primary-text-color", "black");
+    //   root.style.setProperty("--theme", "light");
+    //   root.style.setProperty("--body-background", "white");
+    // } else {
+    //   root.style.setProperty("--app-background", "rgb(30, 30, 30)");
+    //   root.style.setProperty("--theme", "dark");
+    //   root.style.setProperty("--primary-text-color", "white");
+    //   root.style.setProperty("--body-background", "black");
+    // }
+  };
+  const navigationHandler = (type) => {
+    switch (type) {
+      case "home":
+        homeRef.current.scrollIntoView();
+        break;
+      case "about":
+        aboutRef.current.scrollIntoView();
+        break;
+      case "education":
+        educationRef.current.scrollIntoView();
+        break;
+      case "skills":
+        skillsRef.current.scrollIntoView();
+        break;
+      case "message":
+        messageRef.current.scrollIntoView();
+        break;
     }
   };
   return (
@@ -138,7 +203,10 @@ const IndexComponent = () => {
             </HeadingContainer>
             <ImageContainer>
               <ImageBody>
-                <Image src="bag3.jpeg" />
+                <Image
+                  src="my-img-2.JPG"
+                  onContextMenu={(e) => e.preventDefault()}
+                />
               </ImageBody>
             </ImageContainer>
             <MailLocContainer>
@@ -171,19 +239,31 @@ const IndexComponent = () => {
             <ButtonContainer>
               <ButtonBody>
                 <Button onClick={changeTheme}>
-                  <span>H</span>IRE <span>M</span>E!
+                  <span>R</span>esume
+                  {/* <span>M</span>E! */}
                 </Button>
+                <a
+                  href="/bisma-manzoor.pdf"
+                  style={{ display: "none" }}
+                  ref={downloadRef}
+                  download="bisma-manzoor.pdf"
+                />
               </ButtonBody>
             </ButtonContainer>
           </LeftBody>
         </LeftContainer>
         <RightContainer>
           <RightBody>
-            <IntroductionContainer>
-              <IntroDiv>
-                <IntroBody>
-                  <LuHome style={{ color: "grey", fontSize: "12px" }} />
-                  <Intro>Introduce</Intro>
+            <IntroductionContainer ref={homeRef}>
+              <IntroDiv data-aos="fade-left" data-aos-duration="800">
+                <IntroBody active={currentSection == "home"}>
+                  <LuHome
+                    style={{
+                      color: currentSection == "home" ? "green" : "grey",
+                      fontSize: "12px",
+                    }}
+                  />
+                  <Intro active={currentSection == "home"}>Introduce</Intro>
                 </IntroBody>
               </IntroDiv>
               <HeadBody>
@@ -223,13 +303,20 @@ const IndexComponent = () => {
                 </CircleDiv>
               </CircleBody>
             </IntroductionContainer>
-            <AboutContainer>
+            <AboutContainer ref={aboutRef}>
               <IntroDiv>
-                <IntroBody data-aos="fade-up" data-aos-duration="800">
+                <IntroBody
+                  data-aos="fade-left"
+                  data-aos-duration="800"
+                  active={currentSection == "about"}
+                >
                   <BsFillPersonFill
-                    style={{ color: "grey", fontSize: "12px" }}
+                    style={{
+                      color: currentSection == "about" ? "green" : "grey",
+                      fontSize: "12px",
+                    }}
                   />
-                  <Intro>About</Intro>
+                  <Intro active={currentSection == "about"}>About</Intro>
                 </IntroBody>
               </IntroDiv>
               <AboutDiv>
@@ -263,11 +350,20 @@ const IndexComponent = () => {
                 </AboutDetailDiv>
               </DetailBody>
             </AboutContainer>
-            <ResumeContainer>
+            <ResumeContainer ref={educationRef}>
               <IntroDiv>
-                <IntroBody data-aos="fade-up" data-aos-duration="800">
-                  <GiSuitcase style={{ color: "grey", fontSize: "12px" }} />
-                  <Intro>Resume</Intro>
+                <IntroBody
+                  data-aos="fade-left"
+                  data-aos-duration="800"
+                  active={currentSection == "education"}
+                >
+                  <GiSuitcase
+                    style={{
+                      color: currentSection == "education" ? "green" : "grey",
+                      fontSize: "12px",
+                    }}
+                  />
+                  <Intro active={currentSection == "education"}>Resume</Intro>
                 </IntroBody>
               </IntroDiv>
               <ResumeBody
@@ -348,13 +444,20 @@ const IndexComponent = () => {
                 </IstExpDiv>
               </IstExpContainer>
             </ResumeContainer>
-            <SkillsContainer>
+            <SkillsContainer ref={skillsRef}>
               <IntroDiv>
-                <IntroBody data-aos="fade-up" data-aos-duration="800">
+                <IntroBody
+                  data-aos="fade-left"
+                  data-aos-duration="800"
+                  active={currentSection == "skills"}
+                >
                   <BiSolidBuilding
-                    style={{ color: "grey", fontSize: "12px" }}
+                    style={{
+                      color: currentSection == "skills" ? "green" : "grey",
+                      fontSize: "12px",
+                    }}
                   />
-                  <Intro>Skills</Intro>
+                  <Intro active={currentSection == "skills"}>Skills</Intro>
                 </IntroBody>
               </IntroDiv>
               <ResumeBody
@@ -460,10 +563,22 @@ const IndexComponent = () => {
                 </SkillsBody>
               </SkillsDiv>
             </SkillsContainer>
-            <MyDetailsContainer>
+            <MyDetailsContainer ref={messageRef}>
               <IntroDiv>
-                <IntroBody data-aos="fade-up" data-aos-duration="800">
-                  <AiOutlineMail style={{ color: "grey", fontSize: "12px" }} />
+                <IntroBody
+                  data-aos="fade-left"
+                  data-aos-duration="800"
+                  active={currentSection == "message"}
+                >
+                  <AiOutlineMail
+                    style={{
+                      color: currentSection == "message" ? "green" : "grey",
+                      fontSize: "12px",
+                    }}
+                  />
+                  <Intro active={currentSection == "message"}>
+                    Let's connect
+                  </Intro>
                 </IntroBody>
               </IntroDiv>
               <ResumeBody
@@ -474,31 +589,71 @@ const IndexComponent = () => {
                 <ResumeHead>
                   Let's Work<span>Together!</span>
                 </ResumeHead>
-                <Mail>bismahmanxoor1@gmail.com</Mail>
                 <FormContainer>
                   <form action="">
                     <FormDiv>
                       <Section>
                         <Data>
-                          <label htmlFor="" style={{ color: "var(--primary-text-color)" }}>Full Name</label>
-                          <input type="text" style={{ background: "var(--body-background)", color: "var(--primary-text-color)", padding: "7px 5px", border: "none" }} placeholder="Your Name" />
+                          <label
+                            htmlFor=""
+                            style={{ color: "var(--primary-text-color)" }}
+                          >
+                            Full Name
+                          </label>
+                          <input
+                            type="text"
+                            style={{
+                              padding: "7px 5px",
+                            }}
+                            placeholder="Your Name"
+                          />
                         </Data>
                         <Data>
-                          <label htmlFor="" style={{ color: "var(--primary-text-color)" }}>Email</label>
-                          <input type="text" style={{ background: "var(--body-background)", padding: "7px 5px", border: "none" }} placeholder="Your Email" />
+                          <label
+                            htmlFor=""
+                            style={{ color: "var(--primary-text-color)" }}
+                          >
+                            Email
+                          </label>
+                          <input
+                            type="text"
+                            style={{
+                              padding: "7px 5px",
+                            }}
+                            placeholder="Your Email"
+                          />
                         </Data>
                       </Section>
                       <Section>
                         <Data>
-                          <label htmlFor="" style={{ color: "var(--primary-text-color)" }}>Phone</label>
-                          <input type="text" style={{ background: "var(--body-background)", padding: "7px 5px", border: "none" }} placeholder="Your Phone" />
-                        </Data>
-                        <Data>
-                          <label htmlFor="" style={{ color: "var(--primary-text-color)" }}>Message</label>
-                          {/* <input type="text" style={{ background: "black", padding: "7px 0" }} placeholder="Your Message" /> */}
-                          <textarea name="" id="" cols="30" rows="10" style={{ background: "var(--body-background)", padding: "7px 5px", height: "15px", border: "none" }} placeholder="Your Message"></textarea>
+                          <label
+                            htmlFor=""
+                            style={{ color: "var(--primary-text-color)" }}
+                          >
+                            Phone
+                          </label>
+                          <input
+                            type="text"
+                            style={{
+                              padding: "7px 5px",
+                            }}
+                            placeholder="Your Phone"
+                          />
                         </Data>
                       </Section>
+                      <Data>
+                        <label
+                          htmlFor=""
+                          style={{ color: "var(--primary-text-color)" }}
+                        >
+                          Message
+                        </label>
+                        <textarea
+                          cols="10"
+                          rows="3"
+                          placeholder="Your Message"
+                        ></textarea>
+                      </Data>
                       <ButtonDiv>
                         <Button className="submit-btn">Submit</Button>
                       </ButtonDiv>
@@ -513,10 +668,37 @@ const IndexComponent = () => {
           <NavigationBody>
             <IconsDiv>
               <IconsContainer>
-                <AiFillHome />
+                <AiFillHome
+                  onClick={navigationHandler.bind(this, "home")}
+                  style={{
+                    color: currentSection == "home" ? "green" : "grey",
+                  }}
+                />
 
-                <BsFillPersonFill />
-                <BiSolidBuilding />
+                <BsFillPersonFill
+                  onClick={navigationHandler.bind(this, "about")}
+                  style={{
+                    color: currentSection == "about" ? "green" : "grey",
+                  }}
+                />
+                <GiGraduateCap
+                  onClick={navigationHandler.bind(this, "education")}
+                  style={{
+                    color: currentSection == "education" ? "green" : "grey",
+                  }}
+                />
+                <FaShapes
+                  onClick={navigationHandler.bind(this, "skills")}
+                  style={{
+                    color: currentSection == "skills" ? "green" : "grey",
+                  }}
+                />
+                <BiSolidMessageDetail
+                  onClick={navigationHandler.bind(this, "message")}
+                  style={{
+                    color: currentSection == "message" ? "green" : "grey",
+                  }}
+                />
               </IconsContainer>
             </IconsDiv>
           </NavigationBody>
