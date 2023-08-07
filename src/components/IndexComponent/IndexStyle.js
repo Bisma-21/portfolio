@@ -230,6 +230,14 @@ const Button = styled.button`
   border: none;
   font-weight: 600;
   font-size: 19px;
+  .loader {
+    /* background-color: red; */
+    border-color: white;
+    text-align: center;
+    margin-left: 50px;
+    border-top-color: transparent;
+    animation: spin 1s linear infinite;
+  }
   span {
     color: white;
   }
@@ -639,6 +647,11 @@ const Data = styled.div`
   display: flex;
   flex-direction: column;
   gap: 5px;
+  span {
+    color: green;
+    font-size: 17px;
+    margin-left: 1px;
+  }
   > input {
     background-color: var(--app-background);
     border: none;

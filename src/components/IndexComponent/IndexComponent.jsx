@@ -110,6 +110,7 @@ import { RiJavascriptFill } from "react-icons/ri";
 import { BsFillPersonFill } from "react-icons/bs";
 import { useEffect, useRef, useState } from "react";
 import useIsInViewport from "../../hooks/useInViewport";
+import LoaderComponent from "../commons/LoaderComponent/LoaderComponent";
 
 // import { AiFillLinkedin } from "react-icons/ai"
 
@@ -123,6 +124,11 @@ const IndexComponent = () => {
   const educationRef = useRef(null);
   const skillsRef = useRef(null);
   const messageRef = useRef(null);
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
+  const [phone, setPhone] = useState("")
+  const [message, setMessage] = useState("")
+  const [loader, setLoader] = useState(false)
   //   const isHomeIntersecting = useIsInViewport(homeRef);
   const isIntersecting = (ref, onActive) => {
     const observer = new IntersectionObserver(
@@ -143,9 +149,9 @@ const IndexComponent = () => {
     const educationObserver = isIntersecting(educationRef, "education");
     const skillsObserver = isIntersecting(skillsRef, "skills");
     const messageObserver = isIntersecting(messageRef, "message");
-    document.addEventListener("scroll", () => {});
+    document.addEventListener("scroll", () => { });
     return () => {
-      document.removeEventListener("scroll", () => {});
+      document.removeEventListener("scroll", () => { });
       homeObserver.disconnect();
       aboutObserver.disconnect();
       educationObserver.disconnect();
@@ -153,6 +159,7 @@ const IndexComponent = () => {
       messageObserver.disconnect();
     };
   }, []);
+
   const changeTheme = () => {
     downloadRef.current.click();
     // const root = document.querySelector(":root");
@@ -169,6 +176,51 @@ const IndexComponent = () => {
     //   root.style.setProperty("--body-background", "black");
     // }
   };
+  const nameHandler = async (e) => {
+    // console.log("nameHandler==", e.target.value)
+    setName(e.target.value)
+  }
+  const emailHandler = async (e) => {
+    // console.log("emailHandler==", e.target.value)
+    setEmail(e.target.value)
+  }
+  const phoneHandler = async (e) => {
+    // console.log("phoneHandler==", e.target.value)
+    setPhone(e.target.value)
+  }
+  const messageHandler = async (e) => {
+    // console.log("messageHandler==", e.target.value)
+    setMessage(e.target.value)
+  }
+  console.log(name, phone, email, message)
+  const submitHandler = async () => {
+    try {
+      // console.log("submitHandler==", name)
+      setLoader(true)
+      const response = await fetch("https://portfolio-backend-ak7u.onrender.com/send-mail", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json"
+        },
+        body: JSON.stringify({ name, email, phone, message })
+      })
+      console.log("response==>", response.status)
+      if (response.status == 200) {
+        console.log("bbbbbbbbbbb", name)
+        setName("")
+        setPhone("")
+        setEmail("")
+        setMessage("")
+        setLoader(false)
+      }
+      const result = await response.json()
+      console.log("resultt===>", result)
+
+      // setName("")
+    } catch (error) {
+      console.log(error)
+    }
+  }
   const navigationHandler = (type) => {
     switch (type) {
       case "home":
@@ -590,7 +642,7 @@ const IndexComponent = () => {
                   Let's Work<span>Together!</span>
                 </ResumeHead>
                 <FormContainer>
-                  <form action="">
+                  <form onSubmit={(e) => e.preventDefault()}>
                     <FormDiv>
                       <Section>
                         <Data>
@@ -598,7 +650,7 @@ const IndexComponent = () => {
                             htmlFor=""
                             style={{ color: "var(--primary-text-color)" }}
                           >
-                            Full Name
+                            Full Name<span>*</span>
                           </label>
                           <input
                             type="text"
@@ -606,6 +658,9 @@ const IndexComponent = () => {
                               padding: "7px 5px",
                             }}
                             placeholder="Your Name"
+                            onChange={nameHandler}
+                            value={name}
+                            required
                           />
                         </Data>
                         <Data>
@@ -613,7 +668,7 @@ const IndexComponent = () => {
                             htmlFor=""
                             style={{ color: "var(--primary-text-color)" }}
                           >
-                            Email
+                            Email<span>*</span>
                           </label>
                           <input
                             type="text"
@@ -621,6 +676,9 @@ const IndexComponent = () => {
                               padding: "7px 5px",
                             }}
                             placeholder="Your Email"
+                            onChange={emailHandler}
+                            value={email}
+                            required
                           />
                         </Data>
                       </Section>
@@ -630,7 +688,7 @@ const IndexComponent = () => {
                             htmlFor=""
                             style={{ color: "var(--primary-text-color)" }}
                           >
-                            Phone
+                            Phone<span>*</span>
                           </label>
                           <input
                             type="text"
@@ -638,6 +696,9 @@ const IndexComponent = () => {
                               padding: "7px 5px",
                             }}
                             placeholder="Your Phone"
+                            onChange={phoneHandler}
+                            value={phone}
+                            required
                           />
                         </Data>
                       </Section>
@@ -646,16 +707,26 @@ const IndexComponent = () => {
                           htmlFor=""
                           style={{ color: "var(--primary-text-color)" }}
                         >
-                          Message
+                          Message<span>*</span>
                         </label>
                         <textarea
                           cols="10"
                           rows="3"
                           placeholder="Your Message"
+                          onChange={messageHandler}
+                          value={message}
+                          required
                         ></textarea>
                       </Data>
                       <ButtonDiv>
-                        <Button className="submit-btn">Submit</Button>
+                        {
+                          !loader
+                            ?
+                            <Button className="submit-btn" onClick={submitHandler}>Submit</Button>
+                            :
+                            <Button className="submit-btn" onClick={submitHandler}><LoaderComponent className="loader" /></Button>
+                        }
+                        {/* <Button className="submit-btn" onClick={submitHandler}>Submit</Button> */}
                       </ButtonDiv>
                     </FormDiv>
                   </form>
