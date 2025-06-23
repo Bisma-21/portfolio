@@ -348,11 +348,11 @@ const IndexComponent = () => {
 
               <ExpBody>
                 <ExpContainer>
-                  <NumberExp>02+</NumberExp>
+                  <NumberExp>03+</NumberExp>
                   <DetailExp>Years of experience</DetailExp>
                 </ExpContainer>
                 <ProjectContainer>
-                  <NumberPro>04+</NumberPro>
+                  <NumberPro>10+</NumberPro>
                   <DetailPro>Projects Completed</DetailPro>
                 </ProjectContainer>
               </ExpBody>
