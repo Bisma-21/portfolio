@@ -462,12 +462,30 @@ const IndexComponent = () => {
                     <Dot>
                       <BsDot />
                     </Dot>
-                    <Date>Aug-2022 - Present</Date>
+                    <Date>Aug-2022 - Dec-2024</Date>
                   </DotDiv>
                 </ExpDiv>
                 <IstExpDiv>
                   <IstHead>Associate Software Developer</IstHead>
                   <IstCoName>Gortnm Innovations , Noida</IstCoName>
+                </IstExpDiv>
+              </IstExpContainer>
+              <IstExpContainer
+                data-aos="zoom-in-up"
+                data-aos-duration="800"
+                data-aos-delay="300"
+              >
+                <ExpDiv>
+                  <DotDiv>
+                    <Dot>
+                      <BsDot />
+                    </Dot>
+                    <Date>Jan-2024 - Present</Date>
+                  </DotDiv>
+                </ExpDiv>
+                <IstExpDiv>
+                  <IstHead>Associate Mern Stack Developer</IstHead>
+                  <IstCoName>Evervent Private Limited, Mohali</IstCoName>
                 </IstExpDiv>
               </IstExpContainer>
               <IstExpContainer
